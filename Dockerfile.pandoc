@@ -1,0 +1,15 @@
+FROM pandoc/core:latest-alpine
+
+LABEL summary="Pandoc-Latex" \
+      description="pandoc with latex based on core" \
+      name="quay.io/pflaeging/pandoc-pdf-builder" \
+      version="1.0" \
+      maintainer="Peter Pfläging <peter@pflaeging.net>"
+
+
+USER 0
+
+RUN apk upgrade --no-cache && apk add --no-cache texlive-full font-dejavu
+
+ENTRYPOINT ["/bin/sh", "-c"]
+
